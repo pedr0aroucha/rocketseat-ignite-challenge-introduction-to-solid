@@ -4,13 +4,17 @@ class User {
   private id: string;
   private name: string;
   private email: string;
-  private isAdmin: boolean;
+  private admin: boolean;
+  private created_at: Date;
+  private updated_at: Date;
 
   constructor({ name, email }: { name: string; email: string }) {
     this.id = uuidV4();
     this.name = name;
     this.email = email;
-    this.isAdmin = false;
+    this.admin = false;
+    this.created_at = new Date();
+    this.updated_at = new Date();
   }
 
   public getId(): string {
@@ -25,12 +29,21 @@ class User {
     return this.email;
   }
 
-  public getIsAdmin(): boolean {
-    return this.isAdmin;
+  public getAdmin(): boolean {
+    return this.admin;
   }
 
-  public setAdmin(isAdmin: boolean): void {
-    this.isAdmin = isAdmin;
+  public getCreatedAt(): Date {
+    return this.created_at;
+  }
+
+  public getUpdatedAt(): Date {
+    return this.updated_at;
+  }
+
+  public setAdmin(admin: boolean): void {
+    this.admin = admin;
+    this.updated_at = new Date();
   }
 }
 
