@@ -10,6 +10,7 @@ class User {
     this.id = uuidV4();
     this.name = name;
     this.email = email;
+    this.isAdmin = false;
   }
 
   public getId(): string {
