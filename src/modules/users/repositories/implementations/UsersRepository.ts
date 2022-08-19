@@ -43,10 +43,20 @@ class UsersRepository implements IUsersRepository {
 
     user.setAdmin(true);
 
+    const userIndex = this.users.findIndex(
+      (user) => user.getId() === receivedUser.getId()
+    );
+
+    this.users[userIndex] = user;
+
     return user;
   }
 
-  list(): User[] {
+  list(user_id: string): User[] {
+    if (user_id) {
+      return this.users.filter((user) => user.getId() === user_id);
+    }
+
     return this.users;
   }
 }
